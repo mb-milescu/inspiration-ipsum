@@ -7,7 +7,7 @@ agent:
     os_image: ubuntu1804
 
 blocks:
-  - name: Install dependencies
+  - name: Install dependencies & build
     task:
       env_vars:
         - name: NODE_ENV
@@ -26,6 +26,8 @@ blocks:
             - cache restore node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json),node-modules-$SEMAPHORE_GIT_BRANCH,node-modules-master
             - npm install
             - cache store node-modules-$SEMAPHORE_GIT_BRANCH-$(checksum package-lock.json) node_modules
+            - npm run build
+            - cache store build-$SEMAPHORE_GIT_BRANCH-$(checksum build) build
 
   - name: Static Analysis
     task:
