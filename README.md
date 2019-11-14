@@ -1,3 +1,4 @@
+
 # Inspiration Ipsum
 
 A lorem ipsum generator using inspiration quotes. Use text that inspires in your projects!
